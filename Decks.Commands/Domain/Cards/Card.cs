@@ -1,9 +1,13 @@
 namespace Decks.Commands.Domain;
 
 public class Card {
-    public static Card Create()
-    => new Card();
+    public CardPair Pair { get; }
 
-    private Card()
-    { }
+    public static Card Create(CardPair pair)
+    => new Card(pair);
+
+    private Card(CardPair pair)
+    {
+        Pair = pair;
+    }
 }

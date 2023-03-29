@@ -1,6 +1,6 @@
 namespace Decks.Commands.Domain;
 
-public class DeckName
+public class DeckName : ValueObject
 {
     public string Value { get; private set; }
 
