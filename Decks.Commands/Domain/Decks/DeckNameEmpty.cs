@@ -1,4 +1,5 @@
 namespace Decks.Commands.Domain;
 
-public class DeckNameEmpty : Exception
+public class DeckNameEmpty
+: Exception
 { }

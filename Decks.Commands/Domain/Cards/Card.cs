@@ -1,6 +1,10 @@
+using Base.Domain;
+
 namespace Decks.Commands.Domain;
 
-public class Card {
+public class Card
+: Entity
+{
     public CardPair Pair { get; }
 
     public static Card Create(CardPair pair)

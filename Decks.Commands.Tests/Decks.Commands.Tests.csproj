@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Decks.Commands\Decks.Commands.csproj" />
+    <ProjectReference Include="..\Base.Domain\Base.Domain.csproj" />
   </ItemGroup>
 
 </Project>

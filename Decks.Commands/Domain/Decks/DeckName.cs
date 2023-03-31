@@ -1,16 +1,17 @@
+using Base.Domain;
+
 namespace Decks.Commands.Domain;
 
-public class DeckName : ValueObject
+public record DeckName
+: ValueObject<string>
 {
-    public string Value { get; private set; }
-
     public static DeckName Create(string value)
     => new DeckName(value);
 
     private DeckName(string value)
+    : base(value)
     {
         Validate(value);
-        Value = value;
     }
 
     private void Validate(string value)

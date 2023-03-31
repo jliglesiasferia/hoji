@@ -1,6 +1,9 @@
+using Base.Domain;
+
 namespace Decks.Commands.Domain;
 
-public class Decks : EntityCollection<Deck>
+public class Decks
+: EntityCollection<Deck>
 {
     public static Decks Create()
     => new Decks();

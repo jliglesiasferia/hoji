@@ -1,6 +1,9 @@
+using Base.Domain;
+
 namespace Decks.Commands.Domain;
 
-public class CardPair : ValueObject
+public record CardPair
+: ValueObject
 {
     public string Anverse { get; }
     
