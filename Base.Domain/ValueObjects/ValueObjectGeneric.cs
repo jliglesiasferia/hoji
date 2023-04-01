@@ -9,9 +9,12 @@ public abstract record ValueObject<T>(T Value)
     public bool Equals(T? value)
     => Value?.Equals(value) ?? false;
 
-    public int CompareTo(object? otherObject)
+    public sealed override string ToString()
+    => Value?.ToString() ?? "";
+
+    public virtual int CompareTo(object? otherObject)
     => Value?.ToString()?.CompareTo(otherObject?.ToString()) ?? 0;
 
-    public int CompareTo(T? otherValue)
+    public virtual int CompareTo(T? otherValue)
     => Value?.ToString()?.CompareTo(otherValue?.ToString()) ?? 0;
 }

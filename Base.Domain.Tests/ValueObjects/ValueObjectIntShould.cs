@@ -1,12 +1,12 @@
 namespace Base.Domain.Tests;
 
-public class ValueObjectStringShould
+public class ValueObjectIntShould
 {
     [Test]
     public void Be_equal_to_other_instance_with_the_same_string()
     {
-        var firstValueObject = SpecificValueObjectString.Create("some value");
-        var secondValueObject = SpecificValueObjectString.Create("some value");
+        var firstValueObject = SpecificValueObjectInt.Create(32);
+        var secondValueObject = SpecificValueObjectInt.Create(32);
         Assert.That(firstValueObject, Is.EqualTo(secondValueObject));
 
         var equality = firstValueObject == secondValueObject;
@@ -16,8 +16,8 @@ public class ValueObjectStringShould
     [Test]
     public void Be_different_when_another_instance_has_another_string()
     {
-        var firstValueObject = SpecificValueObjectString.Create("first value");
-        var secondValueObject = SpecificValueObjectString.Create("second value");
+        var firstValueObject = SpecificValueObjectInt.Create(12);
+        var secondValueObject = SpecificValueObjectInt.Create(23);
         Assert.That(firstValueObject, Is.Not.EqualTo(secondValueObject));
 
         var equality = firstValueObject == secondValueObject;
@@ -27,31 +27,26 @@ public class ValueObjectStringShould
     [Test]
     public void Be_equal_to_its_string()
     {
-        var objectValue = SpecificValueObjectString.Create("value");
-        Assert.That(objectValue, Is.EqualTo("value"));
+        var objectValue = SpecificValueObjectInt.Create(333);
+        Assert.That(objectValue, Is.EqualTo(333));
     }
 
     [Test]
     public void Print_its_value_when_its_converted_to_string()
     {
-        var printedValue = SpecificValueObjectString.Create("printed value");
-        Assert.That(printedValue, Is.EqualTo("printed value"));
+        var printedValue = SpecificValueObjectInt.Create(85);
+        Assert.That(printedValue, Is.EqualTo("85"));
     }
 
-    [TestCase("   : ", " :   ")]
-    [TestCase("a: ", " :a")]
-    [TestCase("aaa:a", "a:aaa")]
-    [TestCase("b:a", "a:b")]
-    [TestCase("A:a", "a:A")]
-    [TestCase("c:z:b:a", "a:b:c:z")]
-    [TestCase("3: :A:a:$", " :$:3:a:A")]
+    [TestCase("2:1", "1:2")]
     public void Be_able_to_be_ordered_by_its_strings(
         string unordered,
         string ordered)
     {
         var result = string.Join(":", unordered
             .Split(":")
-            .Select(value => SpecificValueObjectString.Create(value))
+            .Select(value => 
+                SpecificValueObjectInt.Create(int.Parse(value)))
             .OrderBy(x => x)
             .ToList());
 
