@@ -34,7 +34,8 @@ public class ValueObjectStringShould
     [Test]
     public void Print_its_value_when_its_converted_to_string()
     {
-        var printedValue = SpecificValueObjectString.Create("printed value");
+        var valueObject = SpecificValueObjectString.Create("printed value");
+        var printedValue = valueObject.ToString();
         Assert.That(printedValue, Is.EqualTo("printed value"));
     }
 
