@@ -24,10 +24,13 @@ public class DeckShould
         var card2 = Card.Create(CardPair.Create("anverse2", "reverse2"));
         var card3 = Card.Create(CardPair.Create("anverse3", "reverse3"));
         var deck = Deck.Create(DeckName.Create("deck name"));
+        
         deck.AddCard(card1);
         Assert.That(deck.Cards, Has.Exactly(1).Items);
+
         deck.AddCard(card2);
         Assert.That(deck.Cards, Has.Exactly(2).Items);
+
         deck.AddCard(card3);
         Assert.That(deck.Cards, Has.Exactly(3).Items);
     }
@@ -42,11 +45,15 @@ public class DeckShould
         deck.AddCard(card1);
         deck.AddCard(card2);
         deck.AddCard(card3);
+
         Assert.That(deck.Cards, Has.Exactly(3).Items);
+
         deck.RemoveCard(card1);
         Assert.That(deck.Cards, Has.Exactly(2).Items);
+
         deck.RemoveCard(card2);
         Assert.That(deck.Cards, Has.Exactly(1).Items);
+
         deck.RemoveCard(card3);
         Assert.That(deck.Cards, Has.Exactly(0).Items);
     }

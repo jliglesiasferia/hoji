@@ -42,7 +42,7 @@ public class ValueObjectStringShould
     }
 
     [Test]
-    public void Be_different_when_another_instance_has_another_string()
+    public void Be_different_to_another_instance_with_another_string()
     {
         var first = SpecificValueObjectString.Create("same value");
         var second = SpecificValueObjectString.Create("same value");

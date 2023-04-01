@@ -3,6 +3,13 @@ namespace Base.Domain.Tests;
 public class EntityIdShould
 {
     [Test]
+    public void Has_a_value_when_no_one_its_passed()
+    {
+        var entityId = EntityId.Create();
+        Assert.That(entityId.Value, Is.Not.Empty);
+    }
+
+    [Test]
     public void Be_equal_to_its_id()
     {
         var id = Guid.NewGuid();

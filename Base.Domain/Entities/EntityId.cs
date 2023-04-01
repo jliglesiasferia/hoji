@@ -1,14 +1,12 @@
 namespace Base.Domain;
 
-public record EntityId(Guid Value)
-: IEquatable<Guid>
+public record EntityId
+: ValueObjectGuid
 {
-    public static EntityId Create(Guid guid)
-    => new EntityId(guid);
+    private EntityId(Guid guid)
+    : base(guid)
+    { }
 
-    public sealed override string ToString()
-    => Value.ToString() ?? "";
-
-    public bool Equals(Guid guid)
-    => Value.Equals(guid);
+    public static EntityId Create(Guid? guid = null)
+    => new EntityId(guid ?? Guid.NewGuid());
 }

@@ -1,4 +1,3 @@
-
 namespace Base.Domain.Tests;
 
 internal record SpecificValueObjectString
