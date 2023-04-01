@@ -3,32 +3,10 @@ namespace Base.Domain.Tests;
 public class ValueObjectStringShould
 {
     [Test]
-    public void Be_equal_to_other_instance_with_the_same_string()
-    {
-        var firstValueObject = SpecificValueObjectString.Create("some value");
-        var secondValueObject = SpecificValueObjectString.Create("some value");
-        Assert.That(firstValueObject, Is.EqualTo(secondValueObject));
-
-        var equality = firstValueObject == secondValueObject;
-        Assert.That(equality, Is.True);
-    }
-
-    [Test]
-    public void Be_different_when_another_instance_has_another_string()
-    {
-        var firstValueObject = SpecificValueObjectString.Create("first value");
-        var secondValueObject = SpecificValueObjectString.Create("second value");
-        Assert.That(firstValueObject, Is.Not.EqualTo(secondValueObject));
-
-        var equality = firstValueObject == secondValueObject;
-        Assert.That(equality, Is.False);
-    }
-
-    [Test]
     public void Be_equal_to_its_string()
     {
-        var objectValue = SpecificValueObjectString.Create("value");
-        Assert.That(objectValue, Is.EqualTo("value"));
+        var valueObject = SpecificValueObjectString.Create("value");
+        Assert.That(valueObject, Is.EqualTo("value"));
     }
 
     [Test]
@@ -37,6 +15,54 @@ public class ValueObjectStringShould
         var valueObject = SpecificValueObjectString.Create("printed value");
         var printedValue = valueObject.ToString();
         Assert.That(printedValue, Is.EqualTo("printed value"));
+    }
+
+    [Test]
+    public void Be_equal_to_another_instance_with_the_same_string()
+    {
+        var first = SpecificValueObjectString.Create("same value");
+        var second = SpecificValueObjectString.Create("same value");
+        var third = SpecificValueObjectString.Create("other value");
+
+        Assert.That(first, Is.EqualTo(second));
+        Assert.That(first == second, Is.True);
+        Assert.That(first == third, Is.False);
+    }
+
+    [Test]
+    public void Be_equal_to_the_same_string()
+    {
+        var value = SpecificValueObjectString.Create("value");
+
+        Assert.That(value == "value", Is.True);
+        Assert.That(value == "other", Is.False);
+
+        Assert.That("value" == value, Is.True);
+        Assert.That("other" == value, Is.False);
+    }
+
+    [Test]
+    public void Be_different_when_another_instance_has_another_string()
+    {
+        var first = SpecificValueObjectString.Create("same value");
+        var second = SpecificValueObjectString.Create("same value");
+        var third = SpecificValueObjectString.Create("other value");
+        
+        Assert.That(first, Is.Not.EqualTo(third));
+        Assert.That(first != second, Is.False);
+        Assert.That(first != third, Is.True);
+    }
+
+    [Test]
+    public void Be_different_to_another_string()
+    {
+        var value = SpecificValueObjectString.Create("value");
+
+        Assert.That(value != "value", Is.False);
+        Assert.That(value != "other", Is.True);
+
+        Assert.That("value" != value, Is.False);
+        Assert.That("other" != value, Is.True);
     }
 
     [TestCase("   : ", " :   ")]

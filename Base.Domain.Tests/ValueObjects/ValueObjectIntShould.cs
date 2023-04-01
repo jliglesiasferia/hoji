@@ -5,8 +5,11 @@ public class ValueObjectIntShould
     [Test]
     public void Be_equal_to_its_integer()
     {
-        var objectValue = SpecificValueObjectInt.Create(333);
-        Assert.That(objectValue, Is.EqualTo(333));
+        var valueObject = SpecificValueObjectInt.Create(32);
+        Assert.That(valueObject, Is.EqualTo(32));
+        Assert.That(valueObject, Is.EqualTo(32L));
+        Assert.That(valueObject, Is.EqualTo((short)32));
+        Assert.That(valueObject, Is.EqualTo((byte)32));
     }
 
     [Test]
@@ -17,7 +20,7 @@ public class ValueObjectIntShould
     }
 
     [Test]
-    public void Be_equal_compared_with_another_instance_with_the_same_integer()
+    public void Be_equal_to_another_instance_with_the_same_integer()
     {
         var first = SpecificValueObjectInt.Create(32);
         var second = SpecificValueObjectInt.Create(32);
@@ -29,14 +32,9 @@ public class ValueObjectIntShould
     }
 
     [Test]
-    public void Be_equal_compared_with_the_same_number()
+    public void Be_equal_to_the_same_number()
     {
         var value = SpecificValueObjectInt.Create(32);
-
-        Assert.That(value, Is.EqualTo(32));
-        Assert.That(value, Is.EqualTo(32L));
-        Assert.That(value, Is.EqualTo((short)32));
-        Assert.That(value, Is.EqualTo((byte)32));
 
         Assert.That(value == 32, Is.True);
         Assert.That(value == 11, Is.False);
@@ -76,7 +74,7 @@ public class ValueObjectIntShould
     }
 
     [Test]
-    public void Be_different_compared_with_another_instance_with_other_integer()
+    public void Be_different_to_another_instance_with_other_integer()
     {
         var first = SpecificValueObjectInt.Create(32);
         var second = SpecificValueObjectInt.Create(32);
@@ -88,7 +86,7 @@ public class ValueObjectIntShould
     }
 
     [Test]
-    public void Be_different_compared_with_another_number()
+    public void Be_different_to_another_number()
     {
         var value = SpecificValueObjectInt.Create(32);
 
