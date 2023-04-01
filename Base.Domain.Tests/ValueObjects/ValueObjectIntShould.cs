@@ -13,7 +13,7 @@ public class ValueObjectIntShould
     }
 
     [Test]
-    public void Print_its_value_when_its_converted_to_string()
+    public void Print_its_value_when_is_converted_to_string()
     {
         var valueObject = SpecificValueObjectInt.Create(85);
         Assert.That(valueObject.ToString(), Is.EqualTo("85"));

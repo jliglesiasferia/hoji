@@ -10,7 +10,7 @@ public class ValueObjectStringShould
     }
 
     [Test]
-    public void Print_its_value_when_its_converted_to_string()
+    public void Print_its_value_when_is_converted_to_string()
     {
         var valueObject = SpecificValueObjectString.Create("printed value");
         var printedValue = valueObject.ToString();

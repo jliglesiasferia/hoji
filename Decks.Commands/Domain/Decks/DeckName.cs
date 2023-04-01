@@ -3,7 +3,7 @@ using Base.Domain;
 namespace Decks.Commands.Domain;
 
 public record DeckName
-: ValueObject<string>
+: ValueObjectString
 {
     public static DeckName Create(string value)
     => new DeckName(value);
