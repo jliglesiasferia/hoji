@@ -1,12 +1,13 @@
 namespace Base.Domain;
 
-public record ValueObjectString
-: ValueObject<string>
+public abstract record ValueObjectString(string Value)
+: ValueObject<string>(Value)
+, IComparable
+, IComparable<string>
 {
-    private ValueObjectString(string value)
-    : base(value)
-    { }
+    public new int CompareTo(object? otherObject)
+    => Value?.ToString()?.CompareTo(otherObject?.ToString()) ?? 0;
 
-    public static ValueObjectString Create(string value)
-    => new ValueObjectString(value);
+    public new int CompareTo(string? otherValue)
+    => Value?.ToString()?.CompareTo(otherValue?.ToString()) ?? 0;
 }

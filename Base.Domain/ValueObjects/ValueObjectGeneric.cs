@@ -1,28 +1,17 @@
 namespace Base.Domain;
 
-public abstract record ValueObject<T>
+public abstract record ValueObject<T>(T Value)
 : ValueObject
 , IEquatable<T?>
 , IComparable
-, IComparable<T?>
+, IComparable<T>
 {
-    private T _value;
-
-    protected ValueObject(T value)
-    => _value = value;
-
-    public override string ToString()
-    => _value?.ToString() ?? "";
-
-    public bool Equals(T? str)
-    => _value?.Equals(str) ?? false;
-
-    public override int GetHashCode()
-    => _value?.GetHashCode() ?? 0;
-
-    public int CompareTo(T? otherValue)
-    => _value?.ToString()?.CompareTo(otherValue) ?? 0;
+    public bool Equals(T? value)
+    => Value?.Equals(value) ?? false;
 
     public int CompareTo(object? otherObject)
-    => _value?.ToString()?.CompareTo(otherObject) ?? 0;
+    => Value?.ToString()?.CompareTo(otherObject?.ToString()) ?? 0;
+
+    public int CompareTo(T? otherValue)
+    => Value?.ToString()?.CompareTo(otherValue?.ToString()) ?? 0;
 }
