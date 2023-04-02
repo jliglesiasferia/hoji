@@ -1,11 +1,11 @@
 namespace Base.Domain.Tests;
 
-public class ValueObjectIntShould
+public class ValueObjectIntegerShould
 {
     [Test]
     public void Be_equal_to_its_integer()
     {
-        var valueObject = SpecificValueObjectInt.Create(32);
+        var valueObject = SpecificValueObjectInteger.Create(32);
         Assert.That(valueObject, Is.EqualTo(32));
         Assert.That(valueObject, Is.EqualTo(32L));
         Assert.That(valueObject, Is.EqualTo((short)32));
@@ -15,16 +15,16 @@ public class ValueObjectIntShould
     [Test]
     public void Print_its_value_when_is_converted_to_string()
     {
-        var valueObject = SpecificValueObjectInt.Create(85);
+        var valueObject = SpecificValueObjectInteger.Create(85);
         Assert.That(valueObject.ToString(), Is.EqualTo("85"));
     }
 
     [Test]
     public void Be_equal_to_another_instance_with_the_same_integer()
     {
-        var first = SpecificValueObjectInt.Create(32);
-        var second = SpecificValueObjectInt.Create(32);
-        var third = SpecificValueObjectInt.Create(12);
+        var first = SpecificValueObjectInteger.Create(32);
+        var second = SpecificValueObjectInteger.Create(32);
+        var third = SpecificValueObjectInteger.Create(12);
 
         Assert.That(first, Is.EqualTo(second));
         Assert.That(first == second, Is.True);
@@ -34,7 +34,7 @@ public class ValueObjectIntShould
     [Test]
     public void Be_equal_to_the_same_number()
     {
-        var value = SpecificValueObjectInt.Create(32);
+        var value = SpecificValueObjectInteger.Create(32);
 
         Assert.That(value == 32, Is.True);
         Assert.That(value == 11, Is.False);
@@ -76,9 +76,9 @@ public class ValueObjectIntShould
     [Test]
     public void Be_different_to_another_instance_with_other_integer()
     {
-        var first = SpecificValueObjectInt.Create(32);
-        var second = SpecificValueObjectInt.Create(32);
-        var third = SpecificValueObjectInt.Create(12);
+        var first = SpecificValueObjectInteger.Create(32);
+        var second = SpecificValueObjectInteger.Create(32);
+        var third = SpecificValueObjectInteger.Create(12);
 
         Assert.That(first, Is.Not.EqualTo(third));
         Assert.That(first != second, Is.False);
@@ -88,7 +88,7 @@ public class ValueObjectIntShould
     [Test]
     public void Be_different_to_another_number()
     {
-        var value = SpecificValueObjectInt.Create(32);
+        var value = SpecificValueObjectInteger.Create(32);
 
         Assert.That(value != 32, Is.False);
         Assert.That(value != 11, Is.True);
@@ -130,10 +130,10 @@ public class ValueObjectIntShould
     [Test]
     public void Be_able_to_indicate_which_one_is_greater()
     {
-        var first = SpecificValueObjectInt.Create(12);
-        var second = SpecificValueObjectInt.Create(23);
-        var third = SpecificValueObjectInt.Create(23);
-        var forth = SpecificValueObjectInt.Create(34);
+        var first = SpecificValueObjectInteger.Create(12);
+        var second = SpecificValueObjectInteger.Create(23);
+        var third = SpecificValueObjectInteger.Create(23);
+        var forth = SpecificValueObjectInteger.Create(34);
 
         Assert.That(second < first, Is.False);
         Assert.That(second < third, Is.False);
@@ -147,10 +147,10 @@ public class ValueObjectIntShould
     [Test]
     public void Be_able_to_indicate_which_one_is_greater_or_equal()
     {
-        var first = SpecificValueObjectInt.Create(12);
-        var second = SpecificValueObjectInt.Create(23);
-        var third = SpecificValueObjectInt.Create(23);
-        var forth = SpecificValueObjectInt.Create(34);
+        var first = SpecificValueObjectInteger.Create(12);
+        var second = SpecificValueObjectInteger.Create(23);
+        var third = SpecificValueObjectInteger.Create(23);
+        var forth = SpecificValueObjectInteger.Create(34);
 
         Assert.That(second <= first, Is.False);
         Assert.That(second <= third, Is.True);
@@ -170,7 +170,7 @@ public class ValueObjectIntShould
     {
         var result = string.Join(":", unordered
             .Split(":")
-            .Select(value => SpecificValueObjectInt.Create(
+            .Select(value => SpecificValueObjectInteger.Create(
                 int.Parse(value)))
             .OrderBy(x => x)
             .ToList());
