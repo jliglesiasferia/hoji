@@ -12,16 +12,16 @@ public abstract record ValueObjectInt(int Value)
     => Value.CompareTo(other?.Value);
 
     public bool Equals(long other)
-    => Value.Equals(Value);
+    => Value == other;
 
     public bool Equals(ulong other)
-    => Value.Equals(Value);
+    => (ulong)Value == other;
 
     public bool Equals(short other)
-    => Value.Equals(Value);
+    => Value == other;
 
     public bool Equals(byte other)
-    => Value.Equals(Value);
+    => Value == other;
 
     public static bool operator ==(ValueObjectInt first, long second)
     => first.Value == second;
