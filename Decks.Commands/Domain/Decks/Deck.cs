@@ -5,15 +5,18 @@ namespace Decks.Commands.Domain;
 public class Deck
 : Entity
 {
+    public User User { get; }
+
     public DeckName Name { get; }
 
     public Cards Cards { get; }
 
-    public static Deck Create(DeckName name)
-    => new Deck(name);
+    public static Deck Create(User user, DeckName name)
+    => new Deck(user, name);
 
-    private Deck(DeckName name)
+    private Deck(User user, DeckName name)
     {
+        User = user;
         Name = name;
         Cards = Cards.Create();
     }
