@@ -170,8 +170,8 @@ public class ValueObjectIntShould
     {
         var result = string.Join(":", unordered
             .Split(":")
-            .Select(value => 
-                SpecificValueObjectInt.Create(int.Parse(value)))
+            .Select(value => SpecificValueObjectInt.Create(
+                int.Parse(value)))
             .OrderBy(x => x)
             .ToList());
 
